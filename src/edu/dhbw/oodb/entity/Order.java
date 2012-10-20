@@ -1,4 +1,4 @@
-package edu.dhbw.oodb;
+package edu.dhbw.oodb.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;

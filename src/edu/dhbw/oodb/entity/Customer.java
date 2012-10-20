@@ -1,4 +1,4 @@
-package edu.dhbw.oodb;
+package edu.dhbw.oodb.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -103,6 +103,14 @@ public class Customer implements Serializable {
 
 	public void setCPhone(String cPhone) {
 		this.cPhone = cPhone;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [cCustkey=" + cCustkey + ", cAcctbal=" + cAcctbal
+				+ ", cAddress=" + cAddress + ", cComment=" + cComment
+				+ ", cMktsegment=" + cMktsegment + ", cName=" + cName
+				+ ", cNationkey=" + cNationkey + ", cPhone=" + cPhone + "]";
 	}
 
 }
