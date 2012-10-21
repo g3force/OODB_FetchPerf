@@ -8,7 +8,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.springframework.test.jpa.AbstractJpaTests;
 
-public class AbstractDaoTests extends
+public abstract class AbstractDaoTests extends
 		AbstractJpaTests {
 
 	private static Connection jdbcConnection;

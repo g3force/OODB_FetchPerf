@@ -1,8 +1,14 @@
 package edu.dhbw.oodb.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * The persistent class for the CUSTOMER database table.
@@ -13,9 +19,12 @@ import java.math.BigDecimal;
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@OneToMany(mappedBy = "customer")
+    private List<Order> orders;
+
 	@Id
 	@Column(name = "C_CUSTKEY", unique = true, nullable = false, precision = 22)
-	private long cCustkey;
+	private long id;
 
 	@Column(name = "C_ACCTBAL", nullable = false, precision = 15, scale = 2)
 	private BigDecimal cAcctbal;
@@ -42,11 +51,11 @@ public class Customer implements Serializable {
 	}
 
 	public long getCCustkey() {
-		return this.cCustkey;
+		return this.id;
 	}
 
 	public void setCCustkey(long cCustkey) {
-		this.cCustkey = cCustkey;
+		this.id = cCustkey;
 	}
 
 	public BigDecimal getCAcctbal() {
@@ -104,10 +113,18 @@ public class Customer implements Serializable {
 	public void setCPhone(String cPhone) {
 		this.cPhone = cPhone;
 	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	@Override
 	public String toString() {
-		return "Customer [cCustkey=" + cCustkey + ", cAcctbal=" + cAcctbal
+		return "Customer [cCustkey=" + id + ", cAcctbal=" + cAcctbal
 				+ ", cAddress=" + cAddress + ", cComment=" + cComment
 				+ ", cMktsegment=" + cMktsegment + ", cName=" + cName
 				+ ", cNationkey=" + cNationkey + ", cPhone=" + cPhone + "]";

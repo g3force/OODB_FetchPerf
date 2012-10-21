@@ -24,5 +24,11 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> getAllOrders() {
+		return getJpaTemplate().find("SELECT o FROM Order o JOIN FETCH o.customer");
+	}
 
 }

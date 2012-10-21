@@ -2,6 +2,7 @@ package edu.dhbw.oodb.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -14,18 +15,19 @@ import java.util.Date;
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
+	@JoinColumn(name="O_CUSTKEY", nullable = false)
+	private Customer customer;
+
 	@Id
 	@Column(name = "O_ORDERKEY", unique = true, nullable = false, precision = 22)
-	private long oOrderkey;
+	private long id;
 
 	@Column(name = "O_CLERK", nullable = false, length = 15)
 	private String oClerk;
 
 	@Column(name = "O_COMMENT", nullable = false, length = 79)
 	private String oComment;
-
-	@Column(name = "O_CUSTKEY", nullable = false, precision = 22)
-	private BigDecimal oCustkey;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "O_ORDERDATE", nullable = false)
@@ -47,11 +49,11 @@ public class Order implements Serializable {
 	}
 
 	public long getOOrderkey() {
-		return this.oOrderkey;
+		return this.id;
 	}
 
 	public void setOOrderkey(long oOrderkey) {
-		this.oOrderkey = oOrderkey;
+		this.id = oOrderkey;
 	}
 
 	public String getOClerk() {
@@ -70,12 +72,12 @@ public class Order implements Serializable {
 		this.oComment = oComment;
 	}
 
-	public BigDecimal getOCustkey() {
-		return this.oCustkey;
+	public Customer getOCustkey() {
+		return this.customer;
 	}
 
-	public void setOCustkey(BigDecimal oCustkey) {
-		this.oCustkey = oCustkey;
+	public void setOCustkey(Customer oCustkey) {
+		this.customer = oCustkey;
 	}
 
 	public Date getOOrderdate() {
@@ -100,6 +102,16 @@ public class Order implements Serializable {
 
 	public void setOOrderstatus(String oOrderstatus) {
 		this.oOrderstatus = oOrderstatus;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [oOrderkey=" + id + ", oClerk=" + oClerk
+				+ ", oComment=" + oComment + ", customer=" + customer
+				+ ", oOrderdate=" + oOrderdate + ", oOrderpriority="
+				+ oOrderpriority + ", oOrderstatus=" + oOrderstatus
+				+ ", oShippriority=" + oShippriority + ", oTotalprice="
+				+ oTotalprice + "]";
 	}
 
 	public BigDecimal getOShippriority() {
