@@ -30,6 +30,14 @@ public class OrderDaoTest extends AbstractDaoTests {
 	@Test
 	public void testFindAll() {
 		List<Order> orders = orderDao.findAll();
-		assertTrue(orders.size() == 8);
+		assertTrue(orders.size() == 1500000);
+		orders = null;
+	}
+
+	@Test
+	public void testGetAllOrders() {
+		List<Order> orders = orderDao.getAllOrders();
+		assertTrue(orders.size() == 1500000);
+		orders = null;
 	}
 }
