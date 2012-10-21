@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="OODB_FetchPerf">
+	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>edu.dhbw.oodb.entity.Customer</class>
+		<class>edu.dhbw.oodb.entity.Order</class>
+		<properties>
+	 		<property name="eclipselink.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+			<property name="eclipselink.jdbc.user" value="tpch"/>
+			<property name="eclipselink.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="eclipselink.jdbc.password" value="TPCH"/>
+<!-- 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
+<!-- 			<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/> -->
+			<property name="eclipselink.application-location" value="."/>
+			<property name="eclipselink.logging.level" value="FINE"/>
+		</properties>
 	</persistence-unit>
 </persistence>
