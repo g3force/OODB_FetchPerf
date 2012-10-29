@@ -11,8 +11,7 @@ import org.perfidix.result.BenchmarkResult;
 
 public class PerfidixContainer {
 	final static String[] classNames = {
-			"edu.dhbw.oodb.dao.test.AbstractDaoTests",
-			"edu.dhbw.oodb.dao.test.CustomerDaoTest",
+//			"edu.dhbw.oodb.dao.test.CustomerDaoTest",
 			"edu.dhbw.oodb.dao.test.OrderDaoTest" };
 
 	/**

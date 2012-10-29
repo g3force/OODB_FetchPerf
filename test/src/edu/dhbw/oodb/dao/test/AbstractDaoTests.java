@@ -12,7 +12,6 @@ import org.perfidix.annotation.BenchClass;
 import org.springframework.test.jpa.AbstractJpaTests;
 
 
-@BenchClass(runs = 100)
 public abstract class AbstractDaoTests extends
 AbstractJpaTests {
 	

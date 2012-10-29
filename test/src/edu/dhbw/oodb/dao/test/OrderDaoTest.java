@@ -32,6 +32,7 @@ public class OrderDaoTest extends AbstractDaoTests {
 	}
 	
 	@Test
+	@Bench
 	public void testGetAllOrdersJoinFetch() {
 		List<Order> orders = this.orderDao.getAllOrdersJoinFetch();
 		assertTrue(orders.size() == OrderDaoImpl.NUM_ENTRIES_FILTER);
