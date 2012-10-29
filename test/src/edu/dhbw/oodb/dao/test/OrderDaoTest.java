@@ -5,8 +5,14 @@ import java.util.List;
 import org.junit.Test;
 
 import edu.dhbw.oodb.dao.OrderDao;
+import edu.dhbw.oodb.dao.OrderDaoImpl;
 import edu.dhbw.oodb.entity.Order;
 
+/**
+ *  -XX:PermSize=64M -XX:MaxPermSize=265m
+ * @author ubuntuuser
+ *
+ */
 public class OrderDaoTest extends AbstractDaoTests {
 
 	private OrderDao orderDao;
@@ -22,22 +28,29 @@ public class OrderDaoTest extends AbstractDaoTests {
 	}
 
 	@Test
-	public void testGetOrder() {
-		Order order = orderDao.getOrder(new Long(1));
-		assertTrue(order != null);
-	}
-
-	@Test
-	public void testFindAll() {
-		List<Order> orders = orderDao.findAll();
-		assertTrue(orders.size() == 1500000);
+	public void testGetAllOrdersJoinFetch() {
+		List<Order> orders = orderDao.getAllOrdersJoinFetch();
+		assertTrue(orders.size() == OrderDaoImpl.NUM_ENTRIES_FILTER);
 		orders = null;
 	}
 
 	@Test
 	public void testGetAllOrders() {
 		List<Order> orders = orderDao.getAllOrders();
-		assertTrue(orders.size() == 1500000);
+		assertTrue(orders.size() == OrderDaoImpl.NUM_ENTRIES_FILTER);
 		orders = null;
 	}
+
+	@Test
+	public void testGetOrder() {
+		Order order = orderDao.getOrder(new Long(1));
+		assertTrue(order != null);
+	}
+//
+//	@Test
+//	public void testFindAll() {
+//		List<Order> orders = orderDao.findAll();
+//		assertTrue(orders.size() == 1500000);
+//		orders = null;
+//	}
 }
