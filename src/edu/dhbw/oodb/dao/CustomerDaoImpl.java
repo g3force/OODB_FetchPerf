@@ -6,6 +6,8 @@ import edu.dhbw.oodb.entity.Customer;
 
 public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements CustomerDao {
 
+	public static final int NUM_ENTRIES = 75000;
+	
 	@Override
 	protected Class<Customer> getEntityClass() {
 		return Customer.class;

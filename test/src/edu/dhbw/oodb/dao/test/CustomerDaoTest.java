@@ -7,6 +7,7 @@ import org.perfidix.annotation.Bench;
 import org.perfidix.annotation.BenchClass;
 
 import edu.dhbw.oodb.dao.CustomerDao;
+import edu.dhbw.oodb.dao.CustomerDaoImpl;
 import edu.dhbw.oodb.entity.Customer;
 
 
@@ -38,7 +39,7 @@ public class CustomerDaoTest extends AbstractDaoTests {
 	public void testFindAll() {
 		List<Customer> customers = this.customerDao.findAll();
 		assertTrue("Customer size is " + customers.size(),
-				customers.size() == 150000);
+				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
 	}
 	
 }

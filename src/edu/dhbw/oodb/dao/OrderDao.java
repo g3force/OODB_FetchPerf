@@ -11,4 +11,6 @@ public interface OrderDao  extends GenericDao<Order> {
 	public List<Order> getAllOrdersJoinFetch();
 	
 	public List<Order> getAllOrders();
+	
+	public List<Order> getAllOrdersEager();
 }

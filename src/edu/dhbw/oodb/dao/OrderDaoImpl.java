@@ -2,13 +2,14 @@ package edu.dhbw.oodb.dao;
 
 import java.util.List;
 
+import javax.persistence.Basic;
+import javax.persistence.FetchType;
+
 import edu.dhbw.oodb.entity.Order;
 
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	
-	public static final int NUM_ENTRIES_FILTER = 150000;
-	private static final String FILTER = " where o.id < " + NUM_ENTRIES_FILTER;
-//	private static final String FILTER = "";
+	public static final int NUM_ENTRIES = 750000;
 
 	@Override
 	protected Class<Order> getEntityClass() {
@@ -32,13 +33,20 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Order> getAllOrdersJoinFetch() {
-		return getJpaTemplate().find("SELECT o FROM Order o JOIN FETCH o.customer" + FILTER);
+		return getJpaTemplate().find("SELECT o FROM Order o JOIN FETCH o.customer");
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Order> getAllOrders() {
-		return getJpaTemplate().find("SELECT o FROM Order o WHERE o.id < 1000"); // + FILTER);
+		return getJpaTemplate().find("SELECT o FROM Order o");
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Basic(fetch=FetchType.EAGER)
+	public List<Order> getAllOrdersEager() {
+		return getJpaTemplate().find("SELECT o FROM Order o");
 	}
 
 }

@@ -8,7 +8,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.perfidix.annotation.AfterBenchClass;
 import org.perfidix.annotation.BeforeBenchClass;
-import org.perfidix.annotation.BenchClass;
 import org.springframework.test.jpa.AbstractJpaTests;
 
 
