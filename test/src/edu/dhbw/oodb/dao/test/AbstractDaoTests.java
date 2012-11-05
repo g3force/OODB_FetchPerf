@@ -29,7 +29,7 @@ public abstract class AbstractDaoTests extends AbstractJUnit4SpringContextTests 
 
 	private static final File dbFile = new File(
 			AbstractDaoTests.class.getName());
-	private static final File dbFileFull = new File(dbFile.getName() + ".h2.db");
+//	private static final File dbFileFull = new File(dbFile.getName() + ".h2.db");
 	private static final File xmlFile = new File(
 			AbstractDaoTests.class.getName() + ".xml");
 
