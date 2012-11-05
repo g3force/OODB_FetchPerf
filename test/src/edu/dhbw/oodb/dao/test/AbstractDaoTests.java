@@ -27,11 +27,12 @@ public abstract class AbstractDaoTests extends AbstractJUnit4SpringContextTests 
 	public MethodRule benchmarkRun = new BenchmarkRule(h2Consumer,
 			writerConsumer, xmlConsumer);
 
-	private static final File dbFile = new File(
-			AbstractDaoTests.class.getName());
-	private static final File dbFileFull = new File(dbFile.getName() + ".h2.db");
-	private static final File xmlFile = new File(
-			AbstractDaoTests.class.getName() + ".xml");
+	private static final File dbFile = new File("benchmark/"
+			+ AbstractDaoTests.class.getName());
+	// private static final File dbFileFull = new File(dbFile.getName() +
+	// ".h2.db");
+	private static final File xmlFile = new File("benchmark/"
+			+ AbstractDaoTests.class.getName() + ".xml");
 
 	private static H2Consumer h2Consumer;
 	private static WriterConsumer writerConsumer;
