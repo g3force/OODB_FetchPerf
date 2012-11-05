@@ -21,8 +21,8 @@ import edu.dhbw.oodb.entity.Order;
  * @author ubuntuuser
  * 
  */
-@BenchmarkMethodChart(filePrefix = "orderDao-lists")
-@BenchmarkHistoryChart(labelWith = LabelType.CUSTOM_KEY,filePrefix = "orderDao-history")
+@BenchmarkMethodChart(filePrefix = "orders")
+@BenchmarkHistoryChart(filePrefix = "orders-history")
 public class OrderDaoTest extends AbstractDaoTests {
 
 	/**

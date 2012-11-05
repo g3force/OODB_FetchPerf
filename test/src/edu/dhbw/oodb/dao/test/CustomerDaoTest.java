@@ -14,8 +14,8 @@ import edu.dhbw.oodb.dao.CustomerDao;
 import edu.dhbw.oodb.dao.CustomerDaoImpl;
 import edu.dhbw.oodb.entity.Customer;
 
-@BenchmarkMethodChart(filePrefix = "customerDao-lists")
-@BenchmarkHistoryChart(filePrefix = "customerDao-history")
+@BenchmarkMethodChart(filePrefix = "customers")
+@BenchmarkHistoryChart(filePrefix = "customers-history")
 public class CustomerDaoTest extends AbstractDaoTests {
 	/**
 	 * To modify the Benchmark runs use at the test method or globally in AbstractDaoTests: 
