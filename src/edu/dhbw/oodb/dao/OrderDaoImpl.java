@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.FetchType;
 
+import org.eclipse.persistence.annotations.BatchFetch;
+import org.eclipse.persistence.annotations.BatchFetchType;
+
 import edu.dhbw.oodb.entity.Order;
 
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
@@ -49,4 +52,16 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 		return getJpaTemplate().find("SELECT o FROM Order o");
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	@BatchFetch(BatchFetchType.EXISTS)
+	public List<Order> getAllOrdersExists() {
+		return getJpaTemplate().find("SELECT o FROM Order o");
+	}
+	
+	@SuppressWarnings("unchecked")
+	@BatchFetch(BatchFetchType.JOIN)
+	public List<Order> getAllOrdersJoin() {
+		return getJpaTemplate().find("SELECT o FROM Order o");
+	}
 }

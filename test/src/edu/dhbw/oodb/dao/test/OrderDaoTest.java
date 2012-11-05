@@ -56,6 +56,20 @@ public class OrderDaoTest extends AbstractDaoTests {
 		assertTrue("" + orders.size(),
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
 	}
+	
+	@Test
+	public void getAllOrdersExists() {
+		List<Order> orders = this.orderDao.getAllOrdersExists();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
+	
+	@Test
+	public void getAllOrdersJoin() {
+		List<Order> orders = this.orderDao.getAllOrdersJoin();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
 
 	@Test
 	public void findAll() {
