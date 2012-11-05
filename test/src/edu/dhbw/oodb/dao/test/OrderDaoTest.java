@@ -36,26 +36,26 @@ public class OrderDaoTest extends AbstractDaoTests {
 		this.orderDao = orderDao;
 	}
 
-//	@Test
-//	public void getAllOrdersJoinFetch() {
-//		List<Order> orders = this.orderDao.getAllOrdersJoinFetch();
-//		assertTrue("" + orders.size() + "; " + OrderDaoImpl.NUM_ENTRIES,
-//				orders.size() == OrderDaoImpl.NUM_ENTRIES);
-//	}
-//
-//	@Test
-//	public void getAllOrders() {
-//		List<Order> orders = this.orderDao.getAllOrders();
-//		assertTrue("" + orders.size(),
-//				orders.size() == OrderDaoImpl.NUM_ENTRIES);
-//	}
-//
-//	@Test
-//	public void getAllOrdersEager() {
-//		List<Order> orders = this.orderDao.getAllOrdersEager();
-//		assertTrue("" + orders.size(),
-//				orders.size() == OrderDaoImpl.NUM_ENTRIES);
-//	}
+	@Test
+	public void getAllOrdersJoinFetch() {
+		List<Order> orders = this.orderDao.getAllOrdersJoinFetch();
+		assertTrue("" + orders.size() + "; " + OrderDaoImpl.NUM_ENTRIES,
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
+
+	@Test
+	public void getAllOrders() {
+		List<Order> orders = this.orderDao.getAllOrders();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
+
+	@Test
+	public void getAllOrdersEager() {
+		List<Order> orders = this.orderDao.getAllOrdersEager();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
 	
 	@Test
 	public void getAllOrdersExists() {
@@ -71,12 +71,12 @@ public class OrderDaoTest extends AbstractDaoTests {
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
 	}
 
-//	@Test
-//	public void findAll() {
-//		List<Order> orders = orderDao.findAll();
-//		assertTrue("" + orders.size(),
-//				orders.size() == OrderDaoImpl.NUM_ENTRIES);
-//	}
+	@Test
+	public void findAll() {
+		List<Order> orders = orderDao.findAll();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
 
 	// @Test
 	// public void testFindById() {
