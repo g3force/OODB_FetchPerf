@@ -5,3 +5,17 @@ build
 # Package Files #
 *.war
 *.ear
+
+# Benchmark result files #
+benchmark/customers-history.html
+benchmark/customers.html
+benchmark/orders-history.html
+benchmark/orders.html
+
+benchmark/customers-history.json
+benchmark/customers.json
+benchmark/orders-history.json
+benchmark/orders.json
+
+*.xml
+*.db
