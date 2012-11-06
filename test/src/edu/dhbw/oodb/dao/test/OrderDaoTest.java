@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkHistoryChart;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
-import com.carrotsearch.junitbenchmarks.annotation.LabelType;
 
 import edu.dhbw.oodb.dao.OrderDao;
 import edu.dhbw.oodb.dao.OrderDaoImpl;
@@ -21,8 +20,8 @@ import edu.dhbw.oodb.entity.Order;
  * @author ubuntuuser
  * 
  */
-@BenchmarkMethodChart(filePrefix = "orderDao-lists")
-@BenchmarkHistoryChart(labelWith = LabelType.CUSTOM_KEY,filePrefix = "orderDao-history")
+@BenchmarkMethodChart(filePrefix = "orders")
+@BenchmarkHistoryChart(filePrefix = "orders-history")
 public class OrderDaoTest extends AbstractDaoTests {
 
 	/**
@@ -54,6 +53,20 @@ public class OrderDaoTest extends AbstractDaoTests {
 	@Test
 	public void getAllOrdersEager() {
 		List<Order> orders = this.orderDao.getAllOrdersEager();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
+	
+	@Test
+	public void getAllOrdersExists() {
+		List<Order> orders = this.orderDao.getAllOrdersExists();
+		assertTrue("" + orders.size(),
+				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	}
+	
+	@Test
+	public void getAllOrdersJoin() {
+		List<Order> orders = this.orderDao.getAllOrdersJoin();
 		assertTrue("" + orders.size(),
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
 	}
