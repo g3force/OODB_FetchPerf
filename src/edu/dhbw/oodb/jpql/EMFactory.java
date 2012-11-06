@@ -21,5 +21,9 @@ public class EMFactory {
 		}
 		return null;
 	}
+	
+	public static void closeEntityManagerFactory() {
+		emf.close();
+	}
 
 }
