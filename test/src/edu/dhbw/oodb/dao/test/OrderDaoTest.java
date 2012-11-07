@@ -12,7 +12,10 @@ import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 
 import edu.dhbw.oodb.dao.OrderDao;
 import edu.dhbw.oodb.dao.OrderDaoImpl;
+import edu.dhbw.oodb.entity.Customer;
 import edu.dhbw.oodb.entity.Order;
+
+import edu.dhbw.oodb.jpql.ManualFetch;
 
 /**
  * -XX:PermSize=64M -XX:MaxPermSize=265m
@@ -78,6 +81,15 @@ public class OrderDaoTest extends AbstractDaoTests {
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
 		assertTrue("First order is null", orders.get(0) != null);
 		assertTrue("Customer is null", orders.get(0).getOCustkey() != null);
+	}
+	
+	@Test
+	public void getAllCustomerWithOrders() {
+		List<Customer> cs = ManualFetch.getAllCustomerAndOrders();
+//		assertTrue("" + cs.size() + "; Entries" ,
+//				orders.size() == ....);
+		assertTrue("First customer is null", cs.get(0) != null);
+		assertTrue("Order is null", cs.get(0).getOrders() != null);
 	}
 
 	// /**
