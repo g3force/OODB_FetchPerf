@@ -25,10 +25,12 @@ import edu.dhbw.oodb.entity.Order;
 public class OrderDaoTest extends AbstractDaoTests {
 
 	/**
-	 * To modify the Benchmark runs use at the test method or globally in AbstractDaoTests: 
+	 * To modify the Benchmark runs use at the test method or globally in
+	 * AbstractDaoTests:
+	 * 
 	 * @BenchmarkOptions(benchmarkRounds = 2, warmupRounds = 0)
 	 */
-	
+
 	@Autowired
 	private OrderDao orderDao;
 
@@ -41,6 +43,8 @@ public class OrderDaoTest extends AbstractDaoTests {
 		List<Order> orders = this.orderDao.getAllOrdersJoinFetch();
 		assertTrue("" + orders.size() + "; " + OrderDaoImpl.NUM_ENTRIES,
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+		assertTrue("First order is null", orders.get(0) != null);
+		assertTrue("Customer is null", orders.get(0).getOCustkey() != null);
 	}
 
 	@Test
@@ -48,35 +52,45 @@ public class OrderDaoTest extends AbstractDaoTests {
 		List<Order> orders = this.orderDao.getAllOrders();
 		assertTrue("" + orders.size(),
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+		assertTrue("First order is null", orders.get(0) != null);
+		assertTrue("Customer is not null", orders.get(0).getOCustkey() != null);
 	}
 
-	@Test
-	public void getAllOrdersEager() {
-		List<Order> orders = this.orderDao.getAllOrdersEager();
-		assertTrue("" + orders.size(),
-				orders.size() == OrderDaoImpl.NUM_ENTRIES);
-	}
-	
+	/**
+	 * Use BatchFetchType.EXIST
+	 */
 	@Test
 	public void getAllOrdersExists() {
 		List<Order> orders = this.orderDao.getAllOrdersExists();
 		assertTrue("" + orders.size(),
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+		assertTrue("First order is null", orders.get(0) != null);
+		assertTrue("Customer is null", orders.get(0).getOCustkey() != null);
 	}
-	
+
+	/**
+	 * Use BatchFetchType.JOIN
+	 */
 	@Test
 	public void getAllOrdersJoin() {
 		List<Order> orders = this.orderDao.getAllOrdersJoin();
 		assertTrue("" + orders.size(),
 				orders.size() == OrderDaoImpl.NUM_ENTRIES);
+		assertTrue("First order is null", orders.get(0) != null);
+		assertTrue("Customer is null", orders.get(0).getOCustkey() != null);
 	}
 
-	@Test
-	public void findAll() {
-		List<Order> orders = orderDao.findAll();
-		assertTrue("" + orders.size(),
-				orders.size() == OrderDaoImpl.NUM_ENTRIES);
-	}
+	// /**
+	// * Same as getAllOrders
+	// */
+	// @Test
+	// public void findAll() {
+	// List<Order> orders = orderDao.findAll();
+	// assertTrue("" + orders.size(),
+	// orders.size() == OrderDaoImpl.NUM_ENTRIES);
+	// assertTrue("First order is null", orders.get(0) != null);
+	// assertTrue("Customer is not null", orders.get(0).getOCustkey() != null);
+	// }
 
 	// @Test
 	// public void testFindById() {

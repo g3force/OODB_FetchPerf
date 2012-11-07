@@ -2,9 +2,6 @@ package edu.dhbw.oodb.dao;
 
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.FetchType;
-
 import org.eclipse.persistence.annotations.BatchFetch;
 import org.eclipse.persistence.annotations.BatchFetchType;
 
@@ -44,14 +41,6 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	public List<Order> getAllOrders() {
 		return getJpaTemplate().find("SELECT o FROM Order o");
 	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	@Basic(fetch=FetchType.EAGER)
-	public List<Order> getAllOrdersEager() {
-		return getJpaTemplate().find("SELECT o FROM Order o");
-	}
-
 	
 	@SuppressWarnings("unchecked")
 	@BatchFetch(BatchFetchType.EXISTS)
