@@ -12,7 +12,10 @@ import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 
 import edu.dhbw.oodb.dao.CustomerDao;
 import edu.dhbw.oodb.dao.CustomerDaoImpl;
+import edu.dhbw.oodb.dao.OrderDao;
+import edu.dhbw.oodb.dao.OrderDaoImpl;
 import edu.dhbw.oodb.entity.Customer;
+import edu.dhbw.oodb.entity.Order;
 
 @BenchmarkMethodChart(filePrefix = "customers")
 @BenchmarkHistoryChart(filePrefix = "customers-history")
@@ -23,9 +26,17 @@ public class CustomerDaoTest extends AbstractDaoTests {
 	 */
 	@Autowired
 	private CustomerDao customerDao;
+	
 
 	public void setCustomerDao(CustomerDao CustomerDao) {
 		this.customerDao = CustomerDao;
+	}
+	
+	@Test
+	public void testGetAllCustomerAndOrdersDao() {
+		List<Customer> customers = this.customerDao.getAllCustomerAndOrdersDao();
+		assertTrue("Customer size is " + customers.size(),
+				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
 	}
 
 	@Test

@@ -57,6 +57,6 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Order> getOrdersByCustkey(Long id) {
-		return getJpaTemplate().find("SELECT o FROM Order o WHERE SELECT o FROM Order o WHERE o.customer.id="+id);
+		return getJpaTemplate().find("SELECT o FROM Order o WHERE o.customer.id="+id);
 	}
 }

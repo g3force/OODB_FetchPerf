@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import edu.dhbw.oodb.dao.CustomerDao;
+import edu.dhbw.oodb.dao.OrderDao;
 import edu.dhbw.oodb.entity.Customer;
 import edu.dhbw.oodb.entity.Order;
 

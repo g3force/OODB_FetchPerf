@@ -11,6 +11,6 @@ public interface CustomerDao  extends GenericDao<Customer> {
 
 	public List<Customer> getAllCustomer();
 
-	public List<Customer> getAllCustomerWithOrdersManual();
+	public List<Customer> getAllCustomerAndOrdersDao();
 	
 }
