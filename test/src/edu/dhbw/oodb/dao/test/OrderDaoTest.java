@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkHistoryChart;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 
+import edu.dhbw.oodb.dao.CustomerDaoImpl;
 import edu.dhbw.oodb.dao.OrderDao;
 import edu.dhbw.oodb.dao.OrderDaoImpl;
 import edu.dhbw.oodb.entity.Customer;
@@ -86,8 +87,8 @@ public class OrderDaoTest extends AbstractDaoTests {
 	@Test
 	public void getAllCustomerWithOrders() {
 		List<Customer> cs = ManualFetch.getAllCustomerAndOrders();
-//		assertTrue("" + cs.size() + "; Entries" ,
-//				orders.size() == ....);
+		assertTrue("" + cs.size(),
+				cs.size() == CustomerDaoImpl.NUM_ENTRIES);
 		assertTrue("First customer is null", cs.get(0) != null);
 		assertTrue("Order is null", cs.get(0).getOrders() != null);
 	}
