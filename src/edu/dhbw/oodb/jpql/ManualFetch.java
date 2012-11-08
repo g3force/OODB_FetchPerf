@@ -14,6 +14,7 @@ public class ManualFetch {
 	
 //	public static void main(String[] args) {
 //		List<Customer> cs = getAllCustomerAndOrders();
+//		System.out.println( cs.size() );
 //	}
 	
 	public static List<Customer> getAllCustomerAndOrders() {
@@ -21,6 +22,7 @@ public class ManualFetch {
 		
 		for( Customer c : cs ) {
 			List<Order> os = getOrderByCustomer(c);
+//			System.out.println("ID: "+c.getCCustkey() + "\tORDERS: "+os.size());
 			c.setOrders(os);
 		}
 		
