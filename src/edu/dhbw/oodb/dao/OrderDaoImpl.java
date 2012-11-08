@@ -53,4 +53,10 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	public List<Order> getAllOrdersJoin() {
 		return getJpaTemplate().find("SELECT o FROM Order o");
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> getOrdersByCustkey(Long id) {
+		return getJpaTemplate().find("SELECT o FROM Order o WHERE SELECT o FROM Order o WHERE o.customer.id="+id);
+	}
 }

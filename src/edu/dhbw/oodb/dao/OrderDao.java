@@ -15,4 +15,6 @@ public interface OrderDao  extends GenericDao<Order> {
 	public List<Order> getAllOrdersExists();
 	
 	public List<Order> getAllOrdersJoin();
+
+	public List<Order> getOrdersByCustkey(Long id);
 }

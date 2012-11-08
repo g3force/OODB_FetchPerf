@@ -2,11 +2,17 @@ package edu.dhbw.oodb.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import edu.dhbw.oodb.entity.Customer;
+import edu.dhbw.oodb.entity.Order;
 
 public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements CustomerDao {
 
 	public static final int NUM_ENTRIES = 75000;
+	
+	@Autowired
+	private OrderDao orderDao;
 	
 	@Override
 	protected Class<Customer> getEntityClass() {
@@ -25,6 +31,25 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements Custome
 		} else {
 			return null;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> getAllCustomer() {
+		return getJpaTemplate().find("select c from Customer c");
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> getAllCustomerWithOrdersManual() {
+		List<Customer> cs = getJpaTemplate().find("select c from Customer c");
+		
+		for(Customer c : cs) {
+			List<Order> os = orderDao.getOrdersByCustkey( c.getCCustkey() );
+			c.setOrders(os);
+		}
+		
+		return cs;
 	}
 
 }

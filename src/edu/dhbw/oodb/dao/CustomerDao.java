@@ -1,9 +1,16 @@
 package edu.dhbw.oodb.dao;
 
+import java.util.List;
+
 import edu.dhbw.oodb.entity.Customer;
+import edu.dhbw.oodb.entity.Order;
 
 public interface CustomerDao  extends GenericDao<Customer> {
 
-	Customer getCustomer(Long id);
+	public Customer getCustomer(Long id);
+
+	public List<Customer> getAllCustomer();
+
+	public List<Customer> getAllCustomerWithOrdersManual();
 	
 }
