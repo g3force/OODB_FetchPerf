@@ -83,15 +83,6 @@ public class OrderDaoTest extends AbstractDaoTests {
 		assertTrue("First order is null", orders.get(0) != null);
 		assertTrue("Customer is null", orders.get(0).getOCustkey() != null);
 	}
-	
-	@Test
-	public void getAllCustomerWithOrders() {
-		List<Customer> cs = ManualFetch.getAllCustomerAndOrders();
-		assertTrue("" + cs.size(),
-				cs.size() == CustomerDaoImpl.NUM_ENTRIES);
-		assertTrue("First customer is null", cs.get(0) != null);
-		assertTrue("Order is null", cs.get(0).getOrders() != null);
-	}
 
 	// /**
 	// * Same as getAllOrders

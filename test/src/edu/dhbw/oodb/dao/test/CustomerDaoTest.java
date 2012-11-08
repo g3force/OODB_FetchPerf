@@ -16,6 +16,7 @@ import edu.dhbw.oodb.dao.OrderDao;
 import edu.dhbw.oodb.dao.OrderDaoImpl;
 import edu.dhbw.oodb.entity.Customer;
 import edu.dhbw.oodb.entity.Order;
+import edu.dhbw.oodb.jpql.ManualFetch;
 
 @BenchmarkMethodChart(filePrefix = "customers")
 @BenchmarkHistoryChart(filePrefix = "customers-history")
@@ -37,6 +38,15 @@ public class CustomerDaoTest extends AbstractDaoTests {
 		List<Customer> customers = this.customerDao.getAllCustomerAndOrdersDao();
 		assertTrue("Customer size is " + customers.size(),
 				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
+	}
+	
+	@Test
+	public void getAllCustomerAndOrdersEM() {
+		List<Customer> cs = ManualFetch.getAllCustomerAndOrders();
+		assertTrue("" + cs.size(),
+				cs.size() == CustomerDaoImpl.NUM_ENTRIES);
+		assertTrue("First customer is null", cs.get(0) != null);
+		assertTrue("Order is null", cs.get(0).getOrders() != null);
 	}
 
 	@Test
