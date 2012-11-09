@@ -20,7 +20,7 @@ import com.carrotsearch.junitbenchmarks.XMLConsumer;
 import com.carrotsearch.junitbenchmarks.h2.H2Consumer;
 
 @ContextConfiguration(locations = { "file:src/db.xml" })
-@BenchmarkOptions(benchmarkRounds = 1, warmupRounds = 0)
+@BenchmarkOptions(benchmarkRounds = 15, warmupRounds = 2)
 public abstract class AbstractDaoTests extends AbstractJUnit4SpringContextTests {
 
 	@Rule
