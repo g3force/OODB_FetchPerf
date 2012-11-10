@@ -12,10 +12,7 @@ import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 
 import edu.dhbw.oodb.dao.CustomerDao;
 import edu.dhbw.oodb.dao.CustomerDaoImpl;
-import edu.dhbw.oodb.dao.OrderDao;
-import edu.dhbw.oodb.dao.OrderDaoImpl;
 import edu.dhbw.oodb.entity.Customer;
-import edu.dhbw.oodb.entity.Order;
 import edu.dhbw.oodb.jpql.ManualFetch;
 
 @BenchmarkMethodChart(filePrefix = "customers")
@@ -49,17 +46,17 @@ public class CustomerDaoTest extends AbstractDaoTests {
 		assertTrue("Order is null", cs.get(0).getOrders() != null);
 	}
 
-	@Test
-	public void testFindById() {
-		Customer customer = this.customerDao.findById(1L);
-		assertTrue(customer != null);
-	}
-
-	@Test
-	public void testGetCustomer() {
-		Customer customer = this.customerDao.getCustomer(new Long(1));
-		assertTrue(customer != null);
-	}
+//	@Test
+//	public void testFindById() {
+//		Customer customer = this.customerDao.findById(1L);
+//		assertTrue(customer != null);
+//	}
+//
+//	@Test
+//	public void testGetCustomer() {
+//		Customer customer = this.customerDao.getCustomer(new Long(1));
+//		assertTrue(customer != null);
+//	}
 
 	@Test
 	public void testFindAll() {

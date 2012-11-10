@@ -2,11 +2,8 @@ package edu.dhbw.oodb.dao.test;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.MethodRule;
@@ -20,7 +17,7 @@ import com.carrotsearch.junitbenchmarks.XMLConsumer;
 import com.carrotsearch.junitbenchmarks.h2.H2Consumer;
 
 @ContextConfiguration(locations = { "file:src/db.xml" })
-@BenchmarkOptions(benchmarkRounds = 15, warmupRounds = 2)
+@BenchmarkOptions(benchmarkRounds = 15, warmupRounds = 1)
 public abstract class AbstractDaoTests extends AbstractJUnit4SpringContextTests {
 
 	@Rule
@@ -51,20 +48,20 @@ public abstract class AbstractDaoTests extends AbstractJUnit4SpringContextTests 
 
 	}
 
-	private static Connection jdbcConnection;
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-		try {
-			jdbcConnection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:XE", "tpch", "tpch");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		jdbcConnection.close();
-	}
+//	private static Connection jdbcConnection;
+//
+//	@BeforeClass
+//	public static void setUpBeforeClass() throws Exception {
+//		try {
+//			jdbcConnection = DriverManager.getConnection(
+//					"jdbc:oracle:thin:@localhost:1521:XE", "tpch", "tpch");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@AfterClass
+//	public static void tearDownAfterClass() throws Exception {
+//		jdbcConnection.close();
+//	}
 }

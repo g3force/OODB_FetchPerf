@@ -9,7 +9,7 @@ import edu.dhbw.oodb.entity.Order;
 
 public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements CustomerDao {
 
-	public static final int NUM_ENTRIES = 86224;//75000;	//86224
+	public static final int NUM_ENTRIES = 75000;	//86224
 	
 	@Autowired
 	private OrderDao orderDao;

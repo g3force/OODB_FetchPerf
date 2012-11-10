@@ -10,13 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkHistoryChart;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 
-import edu.dhbw.oodb.dao.CustomerDaoImpl;
 import edu.dhbw.oodb.dao.OrderDao;
 import edu.dhbw.oodb.dao.OrderDaoImpl;
-import edu.dhbw.oodb.entity.Customer;
 import edu.dhbw.oodb.entity.Order;
-
-import edu.dhbw.oodb.jpql.ManualFetch;
 
 /**
  * -XX:PermSize=64M -XX:MaxPermSize=265m
