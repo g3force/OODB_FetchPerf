@@ -10,3 +10,6 @@ Benchmark Results:
 - run "mountBenchmark.sh" (or run external tool in eclipse)
 - visit http://localhost/benchmark/ (or run external tool "Benchmark Result" in eclipse)
 - choose
+
+We used the junit benchmark framework from carrotsearch:
+http://labs.carrotsearch.com/junit-benchmarks.html
