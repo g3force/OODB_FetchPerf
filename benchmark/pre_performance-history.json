@@ -1,0 +1,16 @@
+{
+"cols": [
+{"label": "Run", "type": "string"},
+{"label": "Custom key", "type": "string"},
+{"label": "Timestamp", "type": "string"},
+{"label": "getAllCustomerAndOrdersDao", "type": "string"} ,
+{"label": "getAllCustomerAndOrdersEM", "type": "string"} ,
+{"label": "getAllCustomers", "type": "string"} ,
+{"label": "getAllCustomersBatchFetchExists", "type": "string"} ,
+{"label": "getAllCustomersBatchFetchJoin", "type": "string"} ,
+{"label": "getAllCustomersJoinFetch", "type": "string"} ,
+{"label": "getAllOrders", "type": "string"} ,
+{"label": "getAllOrdersJoinFetch", "type": "string"} ],
+"rows": [
+{"c": [{"v": "1"}, {"v": "[1]"}, {"v": "2012-11-12 20:13:13.591"}, {"v": 271.364}, {"v": 302.428}, {"v": 110.934}, {"v": 106.545}, {"v": 97.182}, {"v": 36.688}, {"v": 123.155}, {"v": 93.27}]}
+]}

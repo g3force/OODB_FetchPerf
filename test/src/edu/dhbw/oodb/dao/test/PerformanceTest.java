@@ -22,11 +22,14 @@ import edu.dhbw.oodb.entity.Order;
 import edu.dhbw.oodb.jpql.ManualFetch;
 
 /**
- * -XX:PermSize=64M -XX:MaxPermSize=265m
+ * This is the one and only test class for this project with benchmarking etc.
  */
+// define the location of the results
 @BenchmarkMethodChart(filePrefix = "performance")
 @BenchmarkHistoryChart(filePrefix = "performance-history")
-@BenchmarkOptions(benchmarkRounds = 3, warmupRounds = 1)
+// define how many rounds to run
+@BenchmarkOptions(benchmarkRounds = 2, warmupRounds = 1)
+// declare appContext as "dirty", to reload it after each test.
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PerformanceTest extends AbstractDaoTests {
 	/**
@@ -50,8 +53,8 @@ public class PerformanceTest extends AbstractDaoTests {
 	}
 
 	/**
-	 * Check if orders includes correct amount of rows
-	 * and if customers are also available
+	 * Check if orders includes correct amount of rows and if customers are also
+	 * available
 	 * 
 	 * @param orders
 	 */
@@ -64,23 +67,29 @@ public class PerformanceTest extends AbstractDaoTests {
 					.getOCustkey() != null);
 		}
 	}
-	
+
+	/**
+	 * check if all customers and orders were fetched
+	 * 
+	 * @param customers
+	 */
 	private void checkCustomers(List<Customer> customers) {
-		for(Customer customer : customers) {
+		for (Customer customer : customers) {
 			for (int i = 0; i < customer.getOrders().size(); i++) {
-				assertTrue("order " + i + " is null", customer.getOrders().get(i) != null);
+				assertTrue("order " + i + " is null",
+						customer.getOrders().get(i) != null);
 			}
 		}
 	}
-	
-	
+
 	// ################################################################################
-	// ################################### customers ##################################
+	// ################################### customers
+	// ##################################
 	// ################################################################################
 
 	@Test
 	public void getAllCustomers() {
-		List<Customer> customers = this.customerDao.getAllCustomer();
+		List<Customer> customers = this.customerDao.getAllCustomers();
 		assertTrue("" + customers.size(),
 				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
 		assertTrue("First customer is null", customers.get(0) != null);
@@ -89,8 +98,16 @@ public class PerformanceTest extends AbstractDaoTests {
 	}
 
 	@Test
+	public void getAllCustomersJoinFetch() {
+		List<Customer> customers = this.customerDao.getAllCustomersJoinFetch();
+		checkCustomers(customers);
+		customerDao.clearCache();
+	}
+
+	@Test
 	public void getAllCustomersBatchFetchExists() {
-		List<Customer> customers = this.customerDao.getAllCustomerBatchFetchExists();
+		List<Customer> customers = this.customerDao
+				.getAllCustomersBatchFetchExists();
 		assertTrue("" + customers.size(),
 				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
 		assertTrue("First customer is null", customers.get(0) != null);
@@ -100,51 +117,14 @@ public class PerformanceTest extends AbstractDaoTests {
 
 	@Test
 	public void getAllCustomersBatchFetchJoin() {
-		List<Customer> customers = this.customerDao.getAllCustomerBatchFetchJoin();
+		List<Customer> customers = this.customerDao
+				.getAllCustomersBatchFetchJoin();
 		assertTrue("" + customers.size(),
 				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
 		assertTrue("First customer is null", customers.get(0) != null);
 		checkCustomers(customers);
 		customerDao.clearCache();
 	}
-	
-	// ################################################################################
-	// ################################### orders #####################################
-	// ################################################################################
-
-
-	@Test
-	public void getAllOrdersJoinFetch() {
-		List<Order> orders = this.orderDao.getAllOrdersJoinFetch();
-		checkOrders(orders);
-		orderDao.clearCache();
-	}
-	
-	
-	@Test
-	public void getAllOrders() {
-		List<Order> orders = this.orderDao.getAllOrders();
-		checkOrders(orders);
-		orderDao.clearCache();
-	}
-
-//	/**
-//	 * Use BatchFetchType.EXIST
-//	 */
-//	@Test
-//	public void getAllOrdersBatchExists() {
-//		List<Order> orders = this.orderDao.getAllOrdersExists();
-//		checkOrders(orders);
-//	}
-//
-//	/**
-//	 * Use BatchFetchType.JOIN
-//	 */
-//	@Test
-//	public void getAllOrdersBatchJoin() {
-//		List<Order> orders = this.orderDao.getAllOrdersJoin();
-//		checkOrders(orders);
-//	}
 
 	/**
 	 * get all customers first and load for each customer all orders
@@ -152,7 +132,7 @@ public class PerformanceTest extends AbstractDaoTests {
 	@Test
 	public void getAllCustomerAndOrdersDao() {
 		List<Customer> customers = this.customerDao
-				.getAllCustomerAndOrdersDao();
+				.getAllCustomersAndOrdersDao();
 		assertTrue("Customer size is " + customers.size(),
 				customers.size() == CustomerDaoImpl.NUM_ENTRIES);
 		customerDao.clearCache();
@@ -169,43 +149,44 @@ public class PerformanceTest extends AbstractDaoTests {
 		assertTrue("First customer is null", cs.get(0) != null);
 		assertTrue("Order is null", cs.get(0).getOrders() != null);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
-	// @Test
-	// public void testFindAll() {
-	// List<Customer> customers = this.customerDao.findAll();
-	// assertTrue("Customer size is " + customers.size(),
-	// customers.size() == CustomerDaoImpl.NUM_ENTRIES);
-	// }
+	// ################################################################################
+	// ################################### orders
+	// #####################################
+	// ################################################################################
 
+	@Test
+	public void getAllOrdersJoinFetch() {
+		List<Order> orders = this.orderDao.getAllOrdersJoinFetch();
+		checkOrders(orders);
+		orderDao.clearCache();
+	}
+
+	@Test
+	public void getAllOrders() {
+		List<Order> orders = this.orderDao.getAllOrders();
+		checkOrders(orders);
+		orderDao.clearCache();
+	}
+
+	/**
+	 * Batch fetch is not useful for order table
+	 */
 	// /**
-	// * Same as getAllOrders
+	// * Use BatchFetchType.EXIST
 	// */
 	// @Test
-	// public void findAll() {
-	// List<Order> orders = orderDao.findAll();
-	// assertTrue("" + orders.size(),
-	// orders.size() == OrderDaoImpl.NUM_ENTRIES);
-	// assertTrue("First order is null", orders.get(0) != null);
-	// assertTrue("Customer is not null", orders.get(0).getOCustkey() != null);
+	// public void getAllOrdersBatchExists() {
+	// List<Order> orders = this.orderDao.getAllOrdersExists();
+	// checkOrders(orders);
 	// }
-
+	//
+	// /**
+	// * Use BatchFetchType.JOIN
+	// */
 	// @Test
-	// public void testFindById() {
-	// Order order = this.orderDao.findById(1L);
-	// assertTrue(order != null);
-	// }
-
-	// @Test
-	// public void testGetOrder() {
-	// Order order = this.orderDao.getOrder(new Long(1));
-	// assertTrue(order != null);
+	// public void getAllOrdersBatchJoin() {
+	// List<Order> orders = this.orderDao.getAllOrdersJoin();
+	// checkOrders(orders);
 	// }
 }

@@ -11,7 +11,7 @@ import edu.dhbw.oodb.entity.Order;
 
 public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements CustomerDao {
 
-	public static final int NUM_ENTRIES = 30000;	//86224
+	public static final int NUM_ENTRIES = 75000;
 	
 	@Autowired
 	private OrderDao orderDao;
@@ -37,33 +37,33 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements Custome
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> getAllCustomer() {
+	public List<Customer> getAllCustomers() {
 		return getJpaTemplate().find("select c from Customer c");
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Order> getAllCustomersJoinFetch() {
+	public List<Customer> getAllCustomersJoinFetch() {
 		return getJpaTemplate().find("SELECT c FROM Customer c JOIN FETCH c.orders");
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	@BatchFetch(BatchFetchType.JOIN)
-	public List<Customer> getAllCustomerBatchFetchJoin() {
+	public List<Customer> getAllCustomersBatchFetchJoin() {
 		return getJpaTemplate().find("select c from Customer c");
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	@BatchFetch(BatchFetchType.EXISTS)
-	public List<Customer> getAllCustomerBatchFetchExists() {
+	public List<Customer> getAllCustomersBatchFetchExists() {
 		return getJpaTemplate().find("select c from Customer c");
 	}
 	
 	@Override
-	public List<Customer> getAllCustomerAndOrdersDao() {
-		List<Customer> cs = this.getAllCustomer();
+	public List<Customer> getAllCustomersAndOrdersDao() {
+		List<Customer> cs = this.getAllCustomers();
 		
 		for(Customer c : cs) {
 			List<Order> os = orderDao.getOrdersByCustkey( c.getCCustkey() );

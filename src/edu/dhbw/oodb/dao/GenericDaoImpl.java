@@ -36,6 +36,10 @@ public abstract class GenericDaoImpl<T> extends JpaDaoSupport implements Generic
 	
 	protected abstract Class<T> getEntityClass(); 
 	
+	/**
+	 * If there is a entityManager, call clear
+	 * from EM doc: Clear the persistence context, causing all managed entities to become detached.
+	 */
 	public void clearCache() {
 		if(getJpaTemplate().getEntityManager() != null) {
 			getJpaTemplate().getEntityManager().clear();

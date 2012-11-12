@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.junit.launchconfig">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/OODB_FetchPerf/test/src/edu/dhbw/oodb/dao/test/CustomerDaoTest.java"/>
+<listEntry value="/OODB_FetchPerf/test/src/edu/dhbw/oodb/dao/test/PerformanceTest.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
@@ -13,7 +13,7 @@
 <booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="edu.dhbw.oodb.dao.test.CustomerDaoTest"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="edu.dhbw.oodb.dao.test.PerformanceTest"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="OODB_FetchPerf"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-javaagent:lib/spring.jar&#10;-Djub.consumers=CONSOLE,H2&#10;-Djub.db.file=benchmark/.benchmarks&#10;-Djub.charts.dir=benchmark/&#10;-Xms2500m -Xmx2500m -XX:-UseGCOverheadLimit"/>
 </launchConfiguration>

@@ -1,0 +1,24 @@
+{
+"cols": [
+{"label": "method", "type": "string"},
+{"label": "Average time [s]", "type": "number"},
+{"label": "StdDev", "type": "number"},
+{"label": "GC time [s]", "type": "number"},
+{"label": "GC average [s]", "type": "number"},
+{"label": "StdDev", "type": "number"},
+{"label": "GC calls", "type": "number"},
+{"label": "benchmark rounds", "type": "number"},
+{"label": "warmup rounds", "type": "number"},
+{"label": "Total benchmark time", "type": "number"},
+{"label": "Total warmup time", "type": "number"}
+],
+"rows": [
+{"c": [{"v": "getAllCustomers"}, {"v": 110.93}, {"v": 3.7}, {"v": 8.89}, {"v": 0.0}, {"v": 0.0}, {"v": 14}, {"v": 2}, {"v": 1}, {"v": 221.87}, {"v": 106.35}]},
+{"c": [{"v": "getAllCustomersJoinFetch"}, {"v": 36.69}, {"v": 0.95}, {"v": 5.68}, {"v": 0.0}, {"v": 0.0}, {"v": 24}, {"v": 2}, {"v": 1}, {"v": 73.38}, {"v": 38.79}]},
+{"c": [{"v": "getAllCustomersBatchFetchExists"}, {"v": 106.55}, {"v": 15.24}, {"v": 4.75}, {"v": 0.0}, {"v": 0.0}, {"v": 16}, {"v": 2}, {"v": 1}, {"v": 213.09}, {"v": 124.52}]},
+{"c": [{"v": "getAllCustomersBatchFetchJoin"}, {"v": 97.18}, {"v": 11.74}, {"v": 4.01}, {"v": 0.0}, {"v": 0.0}, {"v": 18}, {"v": 2}, {"v": 1}, {"v": 194.36}, {"v": 119.46}]},
+{"c": [{"v": "getAllOrdersJoinFetch"}, {"v": 93.27}, {"v": 1.09}, {"v": 8.4}, {"v": 0.0}, {"v": 0.0}, {"v": 24}, {"v": 2}, {"v": 1}, {"v": 186.54}, {"v": 96.59}]},
+{"c": [{"v": "getAllOrders"}, {"v": 123.16}, {"v": 0.38}, {"v": 7.73}, {"v": 0.0}, {"v": 0.0}, {"v": 23}, {"v": 2}, {"v": 1}, {"v": 246.31}, {"v": 123.51}]},
+{"c": [{"v": "getAllCustomerAndOrdersDao"}, {"v": 271.36}, {"v": 16.35}, {"v": 8.39}, {"v": 0.0}, {"v": 0.0}, {"v": 57}, {"v": 2}, {"v": 1}, {"v": 542.73}, {"v": 266.65}]},
+{"c": [{"v": "getAllCustomerAndOrdersEM"}, {"v": 302.43}, {"v": 21.14}, {"v": 8.41}, {"v": 0.0}, {"v": 0.0}, {"v": 50}, {"v": 2}, {"v": 1}, {"v": 604.86}, {"v": 257.71}]}
+]}
