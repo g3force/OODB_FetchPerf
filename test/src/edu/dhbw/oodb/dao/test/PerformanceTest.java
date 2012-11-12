@@ -26,7 +26,7 @@ import edu.dhbw.oodb.jpql.ManualFetch;
  */
 @BenchmarkMethodChart(filePrefix = "performance")
 @BenchmarkHistoryChart(filePrefix = "performance-history")
-@BenchmarkOptions(benchmarkRounds = 1, warmupRounds = 1)
+@BenchmarkOptions(benchmarkRounds = 3, warmupRounds = 1)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PerformanceTest extends AbstractDaoTests {
 	/**

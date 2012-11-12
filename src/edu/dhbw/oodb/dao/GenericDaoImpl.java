@@ -37,7 +37,9 @@ public abstract class GenericDaoImpl<T> extends JpaDaoSupport implements Generic
 	protected abstract Class<T> getEntityClass(); 
 	
 	public void clearCache() {
-//		getJpaTemplate().getEntityManager().clear();
+		if(getJpaTemplate().getEntityManager() != null) {
+			getJpaTemplate().getEntityManager().clear();
+		}
 	}
 	
 }
