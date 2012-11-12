@@ -2,11 +2,8 @@ package edu.dhbw.oodb.dao;
 
 import java.util.List;
 
-import javax.persistence.FetchType;
-
 import org.eclipse.persistence.annotations.BatchFetch;
 import org.eclipse.persistence.annotations.BatchFetchType;
-import org.eclipse.persistence.annotations.FetchAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.dhbw.oodb.entity.Customer;
@@ -42,6 +39,12 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements Custome
 	@Override
 	public List<Customer> getAllCustomer() {
 		return getJpaTemplate().find("select c from Customer c");
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> getAllCustomersJoinFetch() {
+		return getJpaTemplate().find("SELECT c FROM Customer c JOIN FETCH c.orders");
 	}
 	
 	@SuppressWarnings("unchecked")
