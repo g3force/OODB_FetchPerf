@@ -13,4 +13,8 @@ public interface CustomerDao  extends GenericDao<Customer> {
 
 	public List<Customer> getAllCustomerAndOrdersDao();
 	
+	public List<Customer> getAllCustomerBatchFetchExists();
+	
+	public List<Customer> getAllCustomerBatchFetchJoin();
+
 }

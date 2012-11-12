@@ -9,7 +9,7 @@ import edu.dhbw.oodb.entity.Order;
 
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	
-	public static final int NUM_ENTRIES = 750000;
+	public static final int NUM_ENTRIES = 300000;
 	
 	@Override
 	protected Class<Order> getEntityClass() {

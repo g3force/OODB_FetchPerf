@@ -8,5 +8,6 @@ public interface GenericDao<T> {
 	T update(T object);
 	T findById (Long id);
 	List<T> findAll();
+	public void clearCache();
 	
 }

@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "customer")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy = "customer")
     private List<Order> orders;
 
 	@Id

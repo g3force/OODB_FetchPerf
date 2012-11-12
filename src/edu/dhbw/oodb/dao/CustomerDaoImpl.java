@@ -2,6 +2,11 @@ package edu.dhbw.oodb.dao;
 
 import java.util.List;
 
+import javax.persistence.FetchType;
+
+import org.eclipse.persistence.annotations.BatchFetch;
+import org.eclipse.persistence.annotations.BatchFetchType;
+import org.eclipse.persistence.annotations.FetchAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import edu.dhbw.oodb.entity.Customer;
@@ -9,7 +14,7 @@ import edu.dhbw.oodb.entity.Order;
 
 public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements CustomerDao {
 
-	public static final int NUM_ENTRIES = 75000;	//86224
+	public static final int NUM_ENTRIES = 30000;	//86224
 	
 	@Autowired
 	private OrderDao orderDao;
@@ -36,6 +41,20 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer> implements Custome
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> getAllCustomer() {
+		return getJpaTemplate().find("select c from Customer c");
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@BatchFetch(BatchFetchType.JOIN)
+	public List<Customer> getAllCustomerBatchFetchJoin() {
+		return getJpaTemplate().find("select c from Customer c");
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@BatchFetch(BatchFetchType.EXISTS)
+	public List<Customer> getAllCustomerBatchFetchExists() {
 		return getJpaTemplate().find("select c from Customer c");
 	}
 	
