@@ -28,7 +28,7 @@ import edu.dhbw.oodb.jpql.ManualFetch;
 @BenchmarkMethodChart(filePrefix = "performance")
 @BenchmarkHistoryChart(filePrefix = "performance-history")
 // define how many rounds to run
-@BenchmarkOptions(benchmarkRounds = 2, warmupRounds = 1)
+@BenchmarkOptions(benchmarkRounds = 15, warmupRounds = 1)
 // declare appContext as "dirty", to reload it after each test.
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class PerformanceTest extends AbstractDaoTests {
@@ -79,6 +79,15 @@ public class PerformanceTest extends AbstractDaoTests {
 				assertTrue("order " + i + " is null",
 						customer.getOrders().get(i) != null);
 			}
+		}
+	}
+	
+	@Test
+	public void sleep() {
+		try {
+			Thread.sleep(1000*60*25/16);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
